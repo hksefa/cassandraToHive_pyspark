@@ -44,4 +44,42 @@ spark-submit --jars spark-cassandra-connector.jar cassandraToHive.py configs/con
 
 ###Steps:
 
-You need to clone the repo
+**You need to clone the repo**
+```bash
+git clone https://github.com/vikassri/cassandraToHive_pyspark.git
+cd cassandraToHive_pyspark
+```
+
+**update the config files**
+
+```bash
+[my_keyspace]
+hostname=<cassandra_ip>
+port=<cassandra_port>
+table_list=<tab1>,<tab2>
+partition=<None| or any partition>
+```
+
+##### Environment file
+Update the envrionment file 
+```bash
+export user=<cassandra_user>
+export password=<cassandra_password>
+export target_path=<hive_path_to_store_table>
+# format orc, parquet
+export format=<format>
+# mode can be ignore, overwrite, append
+export mode=<mode>
+```
+Finally, Execute the script with wrapper
+```bash
+# write the logs in console
+sh wrapper.sh
+
+# write the logs in nohup files
+nohup sh wrapper.sh &
+```
+
+Once its completed successfully you can check the data in hive, database name will be keyspace and tables will be same named as cassandra tables.
+
+Let me know if any issues.
