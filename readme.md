@@ -60,7 +60,7 @@ table_list=<tab1>,<tab2>
 partition=<None| or any partition>
 ```
 
-**Environment file**
+**Update the Environment file**
 
 ```bash
 export user=<cassandra_user>
