@@ -1,7 +1,7 @@
 
-# IMPORT KEYSPACE/TABLES FROM CASSANDRA TO HIVE USING PYSPARK
+## IMPORT KEYSPACE/TABLES FROM CASSANDRA TO HIVE USING PYSPARK
 
-This project is to import the keyspace with table from cassandra using pyspark. Code is written in pyspark with Cassandra Spark Connector Jar.
+This project is to import the keyspace with table from cassandra using pyspark. Code is written in pyspark with Cassandra Spark Connector Jar. It will create hive tables in provided format(i.e parquet, orc etc)
 
 #### **Components:**
 
