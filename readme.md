@@ -42,7 +42,7 @@ source ./env_files/env.sh
 spark-submit --jars spark-cassandra-connector.jar cassandraToHive.py configs/config.ini test
 ```
 
-###Steps:
+### Steps 
 
 **You need to clone the repo**
 ```bash
