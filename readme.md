@@ -28,9 +28,9 @@ This will have secret configs and exported on runtime only.
 export user=admin
 export password=admin
 export target_path=/tmp/tables
-# format orc, parquet
+# format [orc, parquet]
 export format=parquet
-# mode can be ignore, overwrite, append
+# mode can be [ignore, overwrite, append]
 export mode=overwrite
 ```
 
