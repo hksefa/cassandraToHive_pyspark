@@ -54,8 +54,8 @@ def spark_load(config_file, section):
     print("User Name        : " + user)
     print("Keyspace Name    : " + keyspace)
     print("Destination path : " + target_path)
-    print("Output Format    : " + format)
-    print("Mode of Output   : " + mode)
+    print("Output Format    : " + op_format)
+    print("Mode of Output   : " + op_mode)
     print("Table List       : " + table_list)
     print("-----------------------------------------------------------------------------------------------------------------")
 
@@ -69,23 +69,21 @@ def spark_load(config_file, section):
         log("info", "Query read completed and loaded into spark dataframe")
         log("info", "Starting load to datalake target path")
         log("info", "Record count is "+str(record_count))
-        #   cassDF.write.format(op_format).mode(op_mode).option(
-        #       "compression", "snappy").save(target_path+"/"+table)
         try:
             target_path = "{}/{}/{}".format(target_path, keyspace, table)
             partition = None if partition.lower() == "none" else partition
             log("info", "partition : {}".format(type(partition)))
-            if format == "csv":
+            if op_format == "csv":
                 log("warn", "you need to be create csv table for {} with path {}".format(
                     table, target_path))
             spark.sql("CREATE database IF NOT EXISTS {}".format(keyspace))
-            cassDF.write.saveAsTable(keyspace+"."+table, format=format, mode=mode,  partitionBy=partition,
+            cassDF.write.saveAsTable(keyspace+"."+table, format=op_format, mode=op_mode,  partitionBy=partition,
                                      path=target_path)
         except:
             log("error", "file format is not correct, please check !!")
             sys.exit(100)
         log("info", "dataframe loaded in {} format successfully into target path {}".format(
-            format, target_path))
+            op_format, target_path))
         log("info", "Data copyied for table {} successfully".format(table))
 
 
