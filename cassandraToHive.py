@@ -33,7 +33,7 @@ def spark_load(config_file, section):
     appName = "PySpark Cassandra query Load"
     master = "local"
     spark = SparkSession.builder.config("spark.sql.parquet.writeLegacyFormat", "true").appName(
-        appName).master(master).getOrCreate()
+        appName).enableHiveSupport().master(master).getOrCreate()
     config = configparser.ConfigParser()
     config.read(config_file)
     sections = config.sections()
