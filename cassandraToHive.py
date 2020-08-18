@@ -72,7 +72,7 @@ def spark_load(config_file, section):
         try:
             target_path = "{}/{}/{}".format(target_path, keyspace, table)
             partition = None if partition.lower() == "none" else partition
-            log("info", "partition : {}".format(type(partition)))
+            log("info", "partition : {}".format(str(partition)))
             if op_format == "csv":
                 log("warn", "you need to be create csv table for {} with path {}".format(
                     table, target_path))
