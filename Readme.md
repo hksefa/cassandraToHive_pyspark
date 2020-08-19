@@ -3,6 +3,13 @@
 
 This project is to import the keyspace with table from cassandra using pyspark. Code is written in pyspark with Cassandra Spark Connector Jar. It will create hive tables in provided format(i.e parquet, orc etc)
 
+### REQUIREMENT
+* Import data from Cassandra to hive
+* New Load everytime
+* Logging 
+* Validation
+
+
 #### **Components:**
 
 * Config File
@@ -11,7 +18,7 @@ This project is to import the keyspace with table from cassandra using pyspark. 
 * Wrapper Script
 
 
-##### ConfigFile
+#### ConfigFile
 Config file will have details regarding database/host and port etc
 ```bash
 [<keyspace_name>]
@@ -22,7 +29,7 @@ partition=None
 ```
 
 
-##### Environment file
+#### Environment file
 This will have secret configs and exported on runtime only.
 ```bash
 export user=admin
@@ -34,7 +41,7 @@ export format=parquet
 export mode=overwrite
 ```
 
-##### Wrapper Script 
+#### Wrapper Script 
 we need to execute this script only
 ```bash
 source ./env_files/env.sh
